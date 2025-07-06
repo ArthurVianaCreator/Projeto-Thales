@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Agilizador de RPG do Thales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA INICIAL (MENU) -->
+    <div id="tela-inicial" class="tela-container active">
+        <div class="card">
+            <div class="titulo-container">
+                <div class="subtitulo">Super Agilizador do</div>
+                <h1>RPG <span class="fancy-font">do Thales</span></h1>
+            </div>
+            <div class="quote-container">
+                <p>"Ferramenta para agilizar o MEU RPG, se você quer usar isso, saiba que ele segue as regras do MEU RPG!"</p>
+                <p class="assinatura">-CAT, Thales</p>
+            </div>
+            <nav class="menu-principal">
+                <button id="btn-iniciar-gerenciador">▶ GERENCIAR PERSONAGENS</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- TELA DE SELEÇÃO DE PERSONAGENS (ROSTER) -->
+    <div id="tela-selecao" class="tela-container">
+        <div class="botoes-topo">
+            <button id="btn-voltar-menu-selecao">⬅ Voltar ao Menu</button>
+            <button id="btn-iniciar-batalha" disabled>⚔️ INICIAR BATALHA ⚔️</button>
+        </div>
+        <div class="roster-container">
+            <div class="roster-coluna">
+                <h2>Meus Heróis (Selecione até 2)</h2>
+                <div id="lista-herois" class="lista-personagens"></div>
+                <button id="btn-novo-heroi" class="btn-adicionar">+ Novo Herói</button>
+            </div>
+            <div class="roster-coluna">
+                <h2>Meus Inimigos (Selecione até 2)</h2>
+                <div id="lista-inimigos" class="lista-personagens"></div>
+                <button id="btn-novo-inimigo" class="btn-adicionar">+ Novo Inimigo</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TELA DO EDITOR -->
+    <div id="tela-editor" class="tela-container">
+        <form class="card editor-form">
+            <h2 id="editor-titulo">Criar Novo Herói</h2>
+            <div class="editor-coluna">
+                <div class="editor-grid-2col">
+                    <div><label for="nome">Nome:</label><input type="text" id="nome" required></div>
+                    <div><label for="nivel">Nível:</label><input type="number" id="nivel" value="1" min="1"></div>
+                </div>
+                <div class="pontos-display">
+                    <span>Pontos Totais: <b id="pontos-totais">3</b></span>
+                    <span>Pontos Restantes: <b id="pontos-restantes">3</b></span>
+                    <button type="button" id="btn-distribuir-pontos" class="btn-pequeno">Distribuir</button>
+                </div>
+                <div class="stats-grid">
+                    <label>HP:</label> <input type="number" id="hp" class="stat-input" value="0" min="0">
+                    <label>Mana:</label> <input type="number" id="mana" class="stat-input" value="0" min="0">
+                    <label>Força:</label> <input type="number" id="forca" class="stat-input" value="0" min="0">
+                    <label>Defesa:</label> <input type="number" id="defesa" class="stat-input" value="0" min="0">
+                    <label>INT:</label> <input type="number" id="int" class="stat-input" value="0" min="0">
+                    <label>VEL:</label> <input type="number" id="vel" class="stat-input" value="0" min="0">
+                </div>
+                <label for="descricao">Descrição:</label><textarea id="descricao" rows="4"></textarea>
+            </div>
+            <div class="editor-coluna">
+                <div class="foto-personagem">
+                    <img id="foto-preview" src="img/placeholder.png" alt="Prévia da Foto">
+                    <div class="image-source-toggle">
+                        <button type="button" id="btn-toggle-upload" class="active">Upload</button>
+                        <button type="button" id="btn-toggle-url">URL</button>
+                    </div>
+                    <div id="input-container-upload"><button type="button" id="btn-trocar-foto">Escolher Arquivo</button><input type="file" id="foto-input" class="hidden" accept="image/*"></div>
+                    <div id="input-container-url" class="hidden"><input type="text" id="foto-url" placeholder="Cole o link da imagem aqui"></div>
+                </div>
+                <div class="habilidades-container">
+                    <label>Habilidades (Máx: 5)</label>
+                    <div id="lista-habilidades-editor" class="lista-habilidades-editor"></div>
+                </div>
+            </div>
+            <div class="botoes-acao">
+                <button type="button" id="btn-salvar-personagem">SALVAR</button>
+                <button type="button" id="btn-cancelar-edicao">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- TELA DE BATALHA -->
+    <div id="tela-batalha" class="tela-container">
+        <div class="arena-container">
+            <div id="lado-jogador" class="batalha-lado"></div>
+            <div id="lado-oponente" class="batalha-lado"></div>
+        </div>
+        <div class="painel-central-batalha">
+            <div id="painel-acoes" class="painel-acoes"></div>
+            <div class="historico-combate">
+                <h3>HISTÓRICO DO COMBATE</h3>
+                <ul id="log-combate"></ul>
+            </div>
+        </div>
+        <button id="btn-voltar-roster" class="btn-voltar-final hidden">Voltar ao Gerenciador</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
