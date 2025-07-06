@@ -32,6 +32,11 @@
     <div id="tela-selecao" class="tela-container">
         <div class="botoes-topo">
             <button id="btn-voltar-menu-selecao">⬅ Voltar ao Menu</button>
+            <div class="botoes-gerenciamento">
+                <button id="btn-exportar">Exportar Dados</button>
+                <label for="import-input" class="btn-label-import">Importar Dados</label>
+                <input type="file" id="import-input" class="hidden" accept=".json">
+            </div>
             <button id="btn-iniciar-batalha" disabled>⚔️ INICIAR BATALHA ⚔️</button>
         </div>
         <div class="roster-container">
@@ -60,7 +65,7 @@
                 <div class="pontos-display">
                     <span>Pontos Totais: <b id="pontos-totais">3</b></span>
                     <span>Pontos Restantes: <b id="pontos-restantes">3</b></span>
-                    <button type="button" id="btn-distribuir-pontos" class="btn-pequeno">Distribuir</button>
+                    <button type="button" id="btn-distribuir-pontos" class="btn-pequeno">Aleatório</button>
                 </div>
                 <div class="stats-grid">
                     <label>HP:</label> <input type="number" id="hp" class="stat-input" value="0" min="0">
@@ -83,7 +88,10 @@
                     <div id="input-container-url" class="hidden"><input type="text" id="foto-url" placeholder="Cole o link da imagem aqui"></div>
                 </div>
                 <div class="habilidades-container">
-                    <label>Habilidades (Máx: 5)</label>
+                    <div class="habilidades-header">
+                        <label>Habilidades (Máx: 5)</label>
+                        <button type="button" id="btn-habilidades-aleatorias" class="btn-pequeno">Aleatório</button>
+                    </div>
                     <div id="lista-habilidades-editor" class="lista-habilidades-editor"></div>
                 </div>
             </div>
